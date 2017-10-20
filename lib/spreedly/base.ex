@@ -22,8 +22,9 @@ defmodule Spreedly.Base do
 
   @spec api_request(atom, Environment.t, String.t, any, Keyword.t, ((any) -> any)) :: {:ok, any} | {:error, any}
   defp api_request(method, env, path, body, options \\ [], response_callback \\ &process_response/1) do
+    opts = [recv_timeout: 10_000] ++ options
     method
-    |> request(path, body, headers(env), options)
+    |> request(path, body, headers(env), opts)
     |> response_callback.()
   end
 
