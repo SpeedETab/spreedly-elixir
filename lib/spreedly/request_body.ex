@@ -1,10 +1,10 @@
 defmodule Spreedly.RequestBody do
   @moduledoc false
 
-  def add_gateway_body(gateway_type, gateway_params \\ %{}) do
+  def add_gateway_body(gateway_type, gateway_params) do
     %{
       gateway: Map.merge(
-        %{ gateway_type: gateway_type },
+        %{gateway_type: gateway_type},
         gateway_params
       )
     }

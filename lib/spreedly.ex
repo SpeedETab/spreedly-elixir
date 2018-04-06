@@ -44,8 +44,8 @@ defmodule Spreedly do
 
   alias Spreedly.Environment
 
-  @spec add_gateway(Environment.t, String.t, Map.t) :: {:ok, any} | {:error, any}
-  def add_gateway(env, gateway_type, gateway_params) do
+  @spec add_gateway(Environment.t, String.t, map()) :: {:ok, any} | {:error, any}
+  def add_gateway(env, gateway_type, gateway_params \\ %{}) do
     post_request(env, add_gateway_path(), add_gateway_body(gateway_type, gateway_params))
   end
 
@@ -67,7 +67,7 @@ defmodule Spreedly do
   @spec redact_gateway(Environment.t, String.t) :: {:ok, any} | {:error, any}
   def redact_gateway(env, token) do
     put_request(env, redact_gateway_method_path(token))
-  end 
+  end
 
   @spec redact_payment_method(Environment.t, String.t) :: {:ok, any} | {:error, any}
   def redact_payment_method(env, token) do
