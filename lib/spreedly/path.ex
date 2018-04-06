@@ -69,6 +69,10 @@ defmodule Spreedly.Path do
     "/payment_methods/#{token}/redact.json"
   end
 
+  def recache_payment_method_path(token) do
+    "/payment_methods/#{token}/recache.json"
+  end
+
   def store_payment_method_path(gateway_token) do
     "/gateways/#{gateway_token}/store.json"
   end

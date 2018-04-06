@@ -74,6 +74,11 @@ defmodule Spreedly do
     put_request(env, redact_payment_method_path(token))
   end
 
+  @spec recache_payment_method(Environment.t, String.t, String.t) :: {:ok, any} | {:error, any}
+  def recache_payment_method(env, token, verification_value) do
+    post_request(env, recache_payment_method_path(token), recache_payment_method_body(verification_value))
+  end
+
   @spec store_payment_method(Environment.t, String.t, String.t) :: {:ok, any} | {:error, any}
   def store_payment_method(env, gateway_token, payment_method_token) do
     post_request(env, store_payment_method_path(gateway_token), store_payment_method_body(payment_method_token))
