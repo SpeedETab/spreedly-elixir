@@ -1,6 +1,5 @@
 defmodule Remote.RedactGatewayMethodTest do
   use Remote.Environment.Case
-  require Logger
 
   test "invalid credentials" do
     bogus_env = Environment.new("invalid", "credentials")
