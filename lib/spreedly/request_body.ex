@@ -52,6 +52,19 @@ defmodule Spreedly.RequestBody do
     |> Poison.encode!
   end
 
+  def recache_payment_method_body(verification_value) do
+    %{
+      payment_method:
+      %{
+        credit_card:
+        %{
+          verification_value: verification_value
+        }
+      }
+    }
+    |> Poison.encode!
+  end
+
   def store_payment_method_body(payment_method_token) do
     %{
       transaction:
