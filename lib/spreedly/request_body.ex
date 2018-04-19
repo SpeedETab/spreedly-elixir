@@ -65,12 +65,12 @@ defmodule Spreedly.RequestBody do
     |> Poison.encode!
   end
 
-  def store_payment_method_body(payment_method_token) do
+  def store_payment_method_body(payment_method_token, options) do
     %{
       transaction:
       %{
         payment_method_token: payment_method_token
-      }
+      } |> Map.merge(Map.new(options))
     }
     |> Poison.encode!
   end
